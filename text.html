@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> $[news] {foreach $[category]} $[category.anchor]
+    <div class="container boards">
+        <div class="title-bar bbcode">
+            <h2>
+                <div class="title_wrapper">$[category.display_name]</div>
+            </h2>
+        </div>
+        <div class="content cap-bottom">
+            $[category.board_list]
+        </div>
+    </div>
+    {/foreach} {if $[legend]}
+    <div class="container legend">
+        <div class="title-bar">
+            <h2>Legend</h2>
+        </div>
+        <div class="content">
+            <table>
+                <tr>
+                    {foreach $[legend]}
+                    <td>$[legend.icon] <span>$[legend.name]</span></td>
+                    {/foreach}
+                </tr>
+            </table>
+        </div>
+    </div>
+    {/if} {if $[show_stats]}
+    <div class="container stats">
+        <div class="title-bar">
+            <h2>Devil at Dawn's &amp; Statistics</h2>
+        </div>
+        <div class="content">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class="icon">$[image.stats]</td>
+                                    <td class="info">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Threads and Posts</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Threads: $[total_threads] &nbsp;&nbsp;&nbsp;&nbsp; Total Posts: $[total_posts]</td>
+                                                </tr>
+                                                {if $[last_updated_thread]}
+                                                <tr>
+                                                    <td>Last Updated: $[last_updated_thread.recent_link] by $[last_updated_thread.last_post.created_by] ($[last_updated_thread.last_post.created_on])</td>
+                                                </tr>{/if}
+                                                <tr>
+                                                    <td>$[recent_threads_link] - $[recent_posts_link]{if $[rss_feed_link]} - $[rss_feed_link]{/if}{if $[mark_boards_read_link]} - $[mark_boards_read_link]{/if}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td class="icon">$[image.members]</td>
+                                    <td class="info">
+                                        <table>
+                                            <tbody>
+
+                                                <tr>
+                                                    <th>Members</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Members: $[total_members]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Newest Member: $[newest_user]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Most Users Online: $[most_users_online] <span class="small">($[most_users_online_date])</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>$[birthdays_today_link]</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td class="icon">$[image.online]</td>
+                                    <td class="info last">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Users Online</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>$[total_staff_online] Staff, $[total_members_online] Member{if $[total_members_online] != 1}s{/if}, {if $[view_guests_online_link]}<a href="#" class="$[view_guests_online_link.class]">{/if}$[total_guests_online] Guest{if $[total_guests_online] != 1}s{/if}{if $[view_guests_online_link]}</a>{/if}.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        {foreach $[online_user]}
+
+                                                        <a class="info-avies" href="$[online_user.href]" style="float: left; margin-right: 5px; margin-top: 5px; border-width: 2px; border-style: solid; border-color: $[online_user.color]!important; border-radius: 100%; padding: 0px; background-color:#fff;" title="$[online_user.name]">$[online_user.avatar_small]</a>                                                        {/foreach} {if $[total_online_not_shown]} , and <a class="$[view_active_members_link.class]" href="$[view_active_members_link.href]">$[total_online_not_shown] more...</a> {/if}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="last">
+                        <td colspan="2">
+                            <table>
+                                <tr>
+                                    <td class="icon">$[image.online_24]</td>
+                                    <td class="info last">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Users Online in the Last 24 Hours</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>$[total_staff_online_24] Staff, <a class="$[view_todays_active_members_link.class]" href="$[view_todays_active_members_link.href]">$[total_members_online_24] Member{if $[total_members_online_24] != 1}s{/if}</a>,
+                                                        $[total_guests_online_24] Guest{if $[total_guests_online_24] != 1}s{/if}.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        {foreach $[online_user_24]} $[online_user_24]{if $[online_user_24.invisible]} <span class="small">(invisible)</span>{/if}$[online_user_24.comma] {/foreach} {if $[total_online_not_shown_24]} , and
+                                                        <a class="$[view_todays_active_members_link.class]" href="$[view_todays_active_members_link.href]">$[total_online_not_shown_24] more...</a> {/if}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {/if}
+
+
+    <div class="container stats">
+        <div class="container stats">
+            <div class="title-bar">
+                <h2>Devil at Dawn's Affliliates and Partners</h2>
+            </div>
+            <div class="content">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td class="icon">$[image.stats]</td>
+                                        <td class="info">
+                                            <table>
+                                                <tbody>
+
+                                                    <tr>
+                                                        <th>OUR AFFILIATES</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Total affiliates: 5</td>
+                                                    </tr>
+                                                    <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5" direction="left">
+                                                        <a href="http://godsrp.jcink.net/index.php?act=idx" target="_blank"><img src="https://68.media.tumblr.com/f84b3f0867b751d1da54e44c2d0c17c6/tumblr_oozwfoVTvm1sd5jbzo1_100.gif" border="0"></a>
+
+                                                        <a href="http://alohomorax0.proboards.com/" style="width:88px;height:31px;" border=0 alt="ALOHOMORA" title="ALOHOMORA"><img src="https://66.media.tumblr.com/477eef25daf2ac33b1df86c354aa801d/tumblr_pxq49qLXbt1r66yn1o1_100.jpg"></a>
+
+                                                        <a href="https://nolaaparecium.jcink.net/index.php" target="_blank" title="NOLA APARECIUM" width="88px" height="31px"><img src="https://files.jcink.net/uploads/nolaaparecium/ADS/ezgif_5_abf1a1102478_1_.jpg" / alt="NOLA Aparecium"></a>
+
+                                                        <a href="http://hftashes.jcink.net/index.php?act=idx" title="Hogwarts: From the Ashes, A Next-Gen RP"><img src="https://k.nickpic.host/bPSw5Y.jpg"></a>
+
+                                                        <a href="http://allwaswellxo.proboards.com" target="_blank"><img src="https://cdn.discordapp.com/attachments/490619955860078593/630534095738241027/pHtM2ms.jpg" border="0" alt="All Was Well"></a>
+
+
+                                                        <a href="http://drivingtowarddeath.jcink.net/index.php?act=idx" target="_blank"><img src="https://imgur.com/Od8GkSo.gif" title="Driving Toward Death" alt="DTD"></a>
+
+                                                        <a href="https://thedevilssnare.jcink.net/index.php?act=idx" title="Devils Snare" target="_blank" class=""><img src="https://cdnw.nickpic.host/oe6HzY.gif"></a>
+
+                                                        <a href="http://thedhp.proboards.com/"><img src="https://78.media.tumblr.com/faf514e0e7eb992fa3bcfcbf5e7b4407/tumblr_oy1yr3Jr7o1wdt8wpo5_100.png" border="0" alt="THE DARK AND HOLLOW PLACES"></a>
+
+                                                        <a href="http://eleutheria.jcink.net" target="blank" ; title="Eleutheria: Historical Greece"><img src="https://files.jcink.net/uploads/eleutheria/Affiliate_Button/EleuAffiliate.gif"></a>
+
+                                                        <a href="https://skao.jcink.net"><img src="https://i.imgur.com/qugQ0bS.gif"></a>
+
+                                                        <a href="http://thewalkingdead2.b1.jcink.com/" target="_blank"><img src="http://i.imgur.com/Y6ftLEG.jpg"></a>
+
+                                                        <a href="http://devils-at-dawn.proboards.com/thread/34/plot"><img src="https://i.ibb.co/XJcg9Zb/a-FF-BUTTON.gif" border="0" alt="ISO"></a>
+                                                    </marquee>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td class="icon">$[image.members]</td>
+                                        <td class="info">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>OUR PARTNERS</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Total partners: 1</td>
+                                                    </tr>
+                                                    <a href="http://thetreehouserp.b1.jcink.com/index.php" target="_blank"><img src="https://cdn.nickpic.host/images/pziEWP.gif" border="0"></a>
+                                                    <a href="https://midnightd.jcink.net/index.php?act=idx" target="_blank"><img src="https://files.jcink.net/uploads/midnightd/forum_images/stylesheet/aff1.png" title="Midnight Dreams" border="0" width="88" height="31"></a>
+                                                    <a href="http://fideliusrp.boards.net/" target="_blank" title="FIDELIUS"><img src="https://cdn.nickpic.host/images/IVMpa8.png" alt="FIDELIUS" border="0" width="88px" height="31px" /></a>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</head>
+
+<body>
+
+</body>
+
+</html>
