@@ -169,6 +169,16 @@ img {
     margin: auto;
 }
 
+.ntr {
+    background-image: url("website.png");
+    /* Make full screen */
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
 .introduction {
     background-image: url("hog.jpg");
     /* Make full screen */
