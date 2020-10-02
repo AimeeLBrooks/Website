@@ -1,0 +1,97 @@
+/* UNIVERSAL VALUES */
+
+@background_color: #fff;
+@background_color2: #ccc;
+@container_outer_border_color: #fff;
+@side_color: red;
+@link_color: #fff;
+@font-face {
+    font-family: Lato;
+    src: url(https://fonts.google.com/specimen/Lato);
+}
+
+.body {
+    padding: 0px;
+    margin: 0px;
+    background-image: "url.png";
+}
+
+.introtitle {
+    border-color: #e4e4e4;
+    box-shadow: 0 0 10px #e4e4e4;
+    font-family: lato;
+}
+
+.introduction {
+    background-image: "image.png";
+    width: 100%;
+    color: @link_color;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.h1 {
+    text-align: center;
+    font-family: lato;
+}
+
+.box4 {
+    text-align: justify;
+    text-transform: uppercase;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-right: 4px;
+    background-color: @background_color;
+    font-size: 7px;
+    height: auto;
+    width: auto;
+    padding-bottom: 2px;
+    border-right: 1px solid @container_outer_border_color;
+    border-bottom: 1px solid @container_outer_border_color;
+    border-left: 1px solid @container_outer_border_color;
+    width: auto;
+}
+
+
+/* Sidebar Links */
+
+.navig a {
+    display: block;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+    padding-left: 4px;
+    position: fixed;
+    font-family: @link_font;
+    font-size: 8px;
+    text-align: left;
+    text-decoration: none;
+    color: @link_color;
+    background: @background_color;
+    border-left: 10px solid @container_outer_border_color;
+    margin-left: 5px;
+}
+
+.navig a:hover {
+    display: block;
+    padding-top: 0.5px;
+    padding-left: 4px;
+    padding-bottom: 0.5px;
+    position: fixed;
+    font-family: @link_font;
+    font-size: 8px;
+    text-align: left;
+    text-decoration: none;
+    color: @link_color;
+    background: @background_color2;
+    margin-left: 5px;
+    border-left: 10px solid @sidecolor;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.main {
+    padding-bottom: 30px
+    /*whatever the height of your footer is*/
+}
