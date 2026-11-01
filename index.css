@@ -22,3 +22,24 @@ background-size:4px 4px;
 z-index:999;
 
 }
+
+.title{
+    opacity:0;
+    animation:
+        fadeIn 4s ease forwards,
+        fadeOut 3s ease forwards 8s;
+}
+
+.subtitle{
+    opacity:0;
+    animation:
+        fadeIn 4s ease forwards 1s,
+        fadeOut 3s ease forwards 8s;
+}
+
+.statement{
+    opacity:0;
+    animation:
+        fadeIn 4s ease forwards 2s,
+        fadeOut 3s ease forwards 8s;
+}
