@@ -1,58 +1,250 @@
+:root{
+
+    --bg:#1B1F1C;
+    --text:#D8D1C5;
+    --muted:#A39B90;
+    --accent:#D8A65D;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--bg);
+    height:100vh;
+    overflow:hidden;
+    font-family:'Inter',sans-serif;
+
+}
+
+/* subtle grain */
+
 body::before{
 
-content:"";
+    content:"";
 
-position:fixed;
+    position:fixed;
 
-top:0;
-left:0;
+    top:0;
+    left:0;
 
-width:100%;
-height:100%;
+    width:100%;
+    height:100%;
 
-pointer-events:none;
+    pointer-events:none;
 
-opacity:.04;
+    opacity:.04;
 
-background-image:
-radial-gradient(circle, #ffffff 1px, transparent 1px);
+    background-image:
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
 
-background-size:4px 4px;
+    background-size:4px 4px;
 
-z-index:999;
+    z-index:999;
+
+}
+
+/* intro section */
+
+.intro{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    z-index:100;
 
 }
 
 .title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(3rem,7vw,7rem);
+
+    font-weight:300;
+
+    color:var(--text);
+
     opacity:0;
+
     animation:
-        fadeIn 4s ease forwards,
-        fadeOut 3s ease forwards 8s;
+        fadeIn 5s ease forwards,
+        fadeOut 3s ease forwards 10s;
+
 }
 
 .subtitle{
+
+    margin-top:1rem;
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+
+    color:var(--muted);
+
     opacity:0;
+
     animation:
-        fadeIn 4s ease forwards 1s,
-        fadeOut 3s ease forwards 8s;
+        fadeIn 5s ease forwards 2s,
+        fadeOut 3s ease forwards 10s;
+
 }
 
 .statement{
+
+    margin-top:2rem;
+
+    max-width:700px;
+
+    padding:0 2rem;
+
+    line-height:1.8;
+
+    color:var(--muted);
+
     opacity:0;
+
     animation:
-        fadeIn 4s ease forwards 2s,
-        fadeOut 3s ease forwards 8s;
+        fadeIn 5s ease forwards 4s,
+        fadeOut 3s ease forwards 10s;
+
 }
-.intro{
+
+/* hero image */
+
+.hero{
+
     position:absolute;
+
     inset:0;
 
-    display:flex;
-    flex-direction:column;
+    opacity:0;
 
-    justify-content:center;
-    align-items:center;
+    animation:imageFade 4s ease forwards 12s;
 
-    z-index:10;
-    text-align:center;
+}
+
+.hero img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+}
+
+/* enter button */
+
+.enter{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:60px;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+    z-index:200;
+
+    animation:fadeIn 3s ease forwards 15s;
+
+}
+
+.enter a{
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    text-transform:uppercase;
+
+    letter-spacing:.25em;
+
+    transition:all .3s ease;
+
+}
+
+.enter a:hover{
+
+    color:var(--accent);
+
+    letter-spacing:.35em;
+
+}
+
+/* animations */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:0;
+    }
+
+}
+
+@keyframes imageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(1.04);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
 }
