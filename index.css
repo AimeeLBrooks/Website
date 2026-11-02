@@ -85,7 +85,7 @@ body::before{
 
     animation:
         fadeIn 1.3s ease forwards,
-        fadeOut 1.3s ease forwards 3s;
+        fadeOut 1.3s ease forwards 10s;
 
 }
 
